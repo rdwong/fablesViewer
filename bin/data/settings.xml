@@ -1,0 +1,7 @@
+<group>
+	<Swap_cams>0</Swap_cams>
+	<Threshold>0.051</Threshold>
+<group/>
+<Shading_thresh>0.0525</Shading_thresh>
+	<Outline_thresh>0.259</Outline_thresh>
+</group>
