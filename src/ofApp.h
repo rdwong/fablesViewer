@@ -1,17 +1,12 @@
 #pragma once
 
-#include "ofMain.h"
-#include "ofxOpenCv.h"
-#include "ofxGui.h"
-
-#define SCREEN_W    800
-#define SCREEN_H    450
-
-#define CAM_RES_X   600
-#define CAM_RES_Y   450
+#include "Globals.h"
+#include "SketchPass.h"
 
 class ofApp : public ofBaseApp{
 
+    ofVec2f center;
+    
 	public:
 		void setup();
 		void update();
@@ -26,20 +21,14 @@ class ofApp : public ofBaseApp{
 		void mouseEntered(int x, int y);
 		void mouseExited(int x, int y);
 		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
 		
+    void ofExit();
+    
     bool debug;
     
     ofFbo rawTexture;
     ofFbo buffer;
     
-    ofShader outlineShader;
-    ofShader shadingShader;
-    ofFbo shadeFbo;
-    ofFbo outlineFbo;
-    
-    ofxCvGrayscaleImage gray;
     ofVideoGrabber grab[2];
     vector<ofVideoDevice> devices;
     
@@ -59,13 +48,6 @@ class ofApp : public ofBaseApp{
     ofxToggle swapCams;
     ofxFloatSlider scaleCams;
     
-    // Shader Stuff
-    ofxPanel guiShaderSketch;
-    ofxFloatSlider shadeThreshold;
-    ofxFloatSlider outlineThreshold;
-    
-    ofxPanel gui;
-    
     void refreshCams();
     void toggleCamAID();
     void toggleCamBID();
@@ -73,14 +55,9 @@ class ofApp : public ofBaseApp{
     void saveSettings();
     void loadSettings();
     
-    void canvas(float width, float height)
-    {
-        glBegin(GL_QUADS);
-        glTexCoord2f(0, 0);     glVertex2f(0, 0);
-        glTexCoord2f(width, 0);     glVertex2f(width, 0);
-        glTexCoord2f(width, height);    glVertex2f(width, height);
-        glTexCoord2f(0, height);    glVertex2f(0, height);
-        glEnd();
-    }
+    // Passes
+    SketchPass* sketch;
     
 };
+
+

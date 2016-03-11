@@ -1,0 +1,72 @@
+//
+//  SketchPass.cpp
+//  fablesViewer
+//
+//  Created by Richard Wong on 11/03/2016.
+//
+//
+
+#include "SketchPass.h"
+
+SketchPass::SketchPass()
+{
+    
+    for (int i = 0; i < 4; i++)
+        hatches.push_back(ofImage("hatches/" + ofToString(i) + ".png"));
+    
+    guiShaderSketch.setup("Shader-Sketch");
+    guiShaderSketch.add(shadeThreshold.setup("Shading thresh", 0.02, 0.0, 1.0));
+    guiShaderSketch.add(outlineThreshold.setup("Outline thresh", 0.02, 0.0, 1.0));
+    guiShaderSketch.loadFromFile("settings.xml");
+    GUI->add(&guiShaderSketch);
+    
+    shadeFbo.allocate(SCREEN_W, SCREEN_H, GL_RGBA);
+    shadeFbo.setAnchorPercent(0.5, 0.5);
+    
+    outlineFbo.allocate(SCREEN_W, SCREEN_H, GL_RGBA);
+    outlineFbo.setAnchorPercent(0.5, 0.5);
+    
+    // load shaders
+    outlineShader.load("outline");
+    shadingShader.load("shading");
+    
+}
+
+void SketchPass::update(ofTexture & raw)
+{
+    // make shading pass with buffer
+    shadeFbo.begin();
+    ofClear(0,0,0,0);
+    
+    shadingShader.begin();
+    shadingShader.setUniformTexture("tex", raw, 0);
+//    shadingShader.setUniformTexture("hatch1", hatches[0].getTexture(), 1);
+//    shadingShader.setUniformTexture("hatch2", hatches[1].getTexture(), 2);
+//    shadingShader.setUniformTexture("hatch3", hatches[2].getTexture(), 3);
+//    shadingShader.setUniformTexture("hatch4", hatches[3].getTexture(), 4);
+    shadingShader.setUniform1f("threshold", shadeThreshold);
+    canvas(SCREEN_W, SCREEN_H);
+    shadingShader.end();
+    
+    shadeFbo.end();
+    
+    // make outline pass with buffer
+    outlineFbo.begin();
+    ofClear(0,0,0,0);
+    
+    outlineShader.begin();
+    outlineShader.setUniformTexture("tex", raw, 0);
+    outlineShader.setUniform1f("threshold", outlineThreshold);
+    canvas(SCREEN_W, SCREEN_H);
+    outlineShader.end();
+    
+    outlineFbo.end();
+}
+
+void SketchPass::render()
+{
+    shadeFbo.draw(0, 0);
+    outlineFbo.draw(0, 0);
+}
+
+

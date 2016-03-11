@@ -14,6 +14,8 @@
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
 		5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C88333E71C9457E441C33474 /* ofxButton.cpp */; };
 		63020F16C7E8DED980111241 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6151136D101F857DAE12722 /* ofxCvImage.cpp */; };
+		79744B7F1C92987F00F16950 /* SketchPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79744B7D1C92987F00F16950 /* SketchPass.cpp */; };
+		79744B821C92989D00F16950 /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79744B801C92989D00F16950 /* Globals.cpp */; };
 		837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15F2C6477A769C03A56D1401 /* ofxSlider.cpp */; };
 		856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9604B925D32EE39065747725 /* ofxBaseGui.cpp */; };
 		B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */; };
@@ -142,6 +144,11 @@
 		78D67A00EB899FAC09430597 /* ofxLabel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLabel.cpp; path = ../../../addons/ofxGui/src/ofxLabel.cpp; sourceTree = SOURCE_ROOT; };
 		79744B771C91BD5A00F16950 /* shading.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = shading.frag; path = bin/data/shading.frag; sourceTree = SOURCE_ROOT; };
 		79744B781C91BD5A00F16950 /* shading.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = shading.vert; path = bin/data/shading.vert; sourceTree = SOURCE_ROOT; };
+		79744B7D1C92987F00F16950 /* SketchPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SketchPass.cpp; sourceTree = "<group>"; };
+		79744B7E1C92987F00F16950 /* SketchPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SketchPass.h; sourceTree = "<group>"; };
+		79744B801C92989D00F16950 /* Globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Globals.cpp; sourceTree = "<group>"; };
+		79744B811C92989D00F16950 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		79744B841C92A43C00F16950 /* Pass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pass.h; sourceTree = "<group>"; };
 		79E285EDBBEA89226444A4D0 /* blenders.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = blenders.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/stitching/detail/blenders.hpp; sourceTree = SOURCE_ROOT; };
 		7B6A03390302D5A2C9F0E4AB /* ofxCvFloatImage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxCvFloatImage.cpp; path = ../../../addons/ofxOpenCv/src/ofxCvFloatImage.cpp; sourceTree = SOURCE_ROOT; };
 		7C3D9C0EAC738ED2624D264B /* ml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ml.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv/ml.h; sourceTree = SOURCE_ROOT; };
@@ -451,7 +458,7 @@
 			name = ofxGui;
 			sourceTree = "<group>";
 		};
-		4A28C46B1C81090A00F642BC /* outlineShader */ = {
+		4A28C46B1C81090A00F642BC /* SketchShaders */ = {
 			isa = PBXGroup;
 			children = (
 				4A90DE6C1C904B8300BC9861 /* angle_outline.frag */,
@@ -461,7 +468,7 @@
 				79744B771C91BD5A00F16950 /* shading.frag */,
 				79744B781C91BD5A00F16950 /* shading.vert */,
 			);
-			name = outlineShader;
+			name = SketchShaders;
 			sourceTree = "<group>";
 		};
 		5236346776DB8ECC4B121CA3 /* gpu */ = {
@@ -744,10 +751,15 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				79744B801C92989D00F16950 /* Globals.cpp */,
+				79744B811C92989D00F16950 /* Globals.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
-				4A28C46B1C81090A00F642BC /* outlineShader */,
+				79744B841C92A43C00F16950 /* Pass.h */,
+				79744B7D1C92987F00F16950 /* SketchPass.cpp */,
+				79744B7E1C92987F00F16950 /* SketchPass.h */,
+				4A28C46B1C81090A00F642BC /* SketchShaders */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -880,9 +892,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79744B7F1C92987F00F16950 /* SketchPass.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
+				79744B821C92989D00F16950 /* Globals.cpp in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,

@@ -1,20 +1,8 @@
 <Settings>
-	<Admin/>
-	<Camera>
-		<Camera_scale>1</Camera_scale>
-		<Toggle_Cam_A>1</Toggle_Cam_A>
-		<Toggle_Cam_B>2</Toggle_Cam_B>
-		<Swap_cams>0</Swap_cams>
-	</Camera>
-	<Shader-Sketch>
-		<Shading_thresh>1</Shading_thresh>
-		<Outline_thresh>0.117347</Outline_thresh>
-	</Shader-Sketch>
-<Settings/>
-<group>
+	<group>
 		<Admin/>
 		<Camera>
-			<Camera_scale>1</Camera_scale>
+			<Camera_scale>0.821429</Camera_scale>
 			<Toggle_Cam_A>1</Toggle_Cam_A>
 			<Toggle_Cam_B>2</Toggle_Cam_B>
 			<Swap_cams>0</Swap_cams>
@@ -24,4 +12,16 @@
 			<Outline_thresh>0.117347</Outline_thresh>
 		</Shader-Sketch>
 	</group>
+<Settings/>
+	<Admin/>
+	<Camera>
+		<Camera_scale>0.839286</Camera_scale>
+		<Toggle_Cam_A>1</Toggle_Cam_A>
+		<Toggle_Cam_B>2</Toggle_Cam_B>
+		<Swap_cams>0</Swap_cams>
+	</Camera>
+	<Shader-Sketch>
+		<Shading_thresh>0.576531</Shading_thresh>
+		<Outline_thresh>0.265306</Outline_thresh>
+	</Shader-Sketch>
 </Settings>
