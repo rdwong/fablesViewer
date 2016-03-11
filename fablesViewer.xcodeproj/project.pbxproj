@@ -108,8 +108,8 @@
 		49EFFCF36CF194CCE0E1FAAB /* kdtree_index.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = kdtree_index.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/kdtree_index.h; sourceTree = SOURCE_ROOT; };
 		4A28C4691C81090400F642BC /* outline.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = outline.frag; path = bin/data/outline.frag; sourceTree = SOURCE_ROOT; };
 		4A28C46A1C81090400F642BC /* outline.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = outline.vert; path = bin/data/outline.vert; sourceTree = SOURCE_ROOT; };
-		4A90DE6C1C904B8300BC9861 /* shading.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = shading.frag; path = bin/data/shading.frag; sourceTree = SOURCE_ROOT; };
-		4A90DE6D1C904B8300BC9861 /* shading.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = shading.vert; path = bin/data/shading.vert; sourceTree = SOURCE_ROOT; };
+		4A90DE6C1C904B8300BC9861 /* angle_outline.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = angle_outline.frag; path = bin/data/angle_outline.frag; sourceTree = SOURCE_ROOT; };
+		4A90DE6D1C904B8300BC9861 /* angle_outline.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = angle_outline.vert; path = bin/data/angle_outline.vert; sourceTree = SOURCE_ROOT; };
 		4CD2228F2C8116D51179E3A3 /* devmem2d.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = devmem2d.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/core/devmem2d.hpp; sourceTree = SOURCE_ROOT; };
 		4CFA8A81B93736DE82F0090A /* gpumat.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = gpumat.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/core/gpumat.hpp; sourceTree = SOURCE_ROOT; };
 		5105862F1606831E9239FEAF /* simd_functions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = simd_functions.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/device/simd_functions.hpp; sourceTree = SOURCE_ROOT; };
@@ -140,6 +140,8 @@
 		758F19335D4E46A5E0DE449F /* kdtree_single_index.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = kdtree_single_index.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/kdtree_single_index.h; sourceTree = SOURCE_ROOT; };
 		7673F0AA19794A4C9517CF14 /* ts.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ts.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/ts/ts.hpp; sourceTree = SOURCE_ROOT; };
 		78D67A00EB899FAC09430597 /* ofxLabel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLabel.cpp; path = ../../../addons/ofxGui/src/ofxLabel.cpp; sourceTree = SOURCE_ROOT; };
+		79744B771C91BD5A00F16950 /* shading.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = shading.frag; path = bin/data/shading.frag; sourceTree = SOURCE_ROOT; };
+		79744B781C91BD5A00F16950 /* shading.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = shading.vert; path = bin/data/shading.vert; sourceTree = SOURCE_ROOT; };
 		79E285EDBBEA89226444A4D0 /* blenders.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = blenders.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/stitching/detail/blenders.hpp; sourceTree = SOURCE_ROOT; };
 		7B6A03390302D5A2C9F0E4AB /* ofxCvFloatImage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxCvFloatImage.cpp; path = ../../../addons/ofxOpenCv/src/ofxCvFloatImage.cpp; sourceTree = SOURCE_ROOT; };
 		7C3D9C0EAC738ED2624D264B /* ml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ml.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv/ml.h; sourceTree = SOURCE_ROOT; };
@@ -452,10 +454,12 @@
 		4A28C46B1C81090A00F642BC /* outlineShader */ = {
 			isa = PBXGroup;
 			children = (
-				4A90DE6C1C904B8300BC9861 /* shading.frag */,
-				4A90DE6D1C904B8300BC9861 /* shading.vert */,
+				4A90DE6C1C904B8300BC9861 /* angle_outline.frag */,
+				4A90DE6D1C904B8300BC9861 /* angle_outline.vert */,
 				4A28C4691C81090400F642BC /* outline.frag */,
 				4A28C46A1C81090400F642BC /* outline.vert */,
+				79744B771C91BD5A00F16950 /* shading.frag */,
+				79744B781C91BD5A00F16950 /* shading.vert */,
 			);
 			name = outlineShader;
 			sourceTree = "<group>";

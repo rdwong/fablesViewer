@@ -48,18 +48,19 @@ class ofApp : public ofBaseApp{
     int offX, offY;
     
     // Admin
+    ofxPanel guiAdmin;
     ofxButton saveBtn;
     ofxButton loadBtn;
     
     // Camera Stuff
-    int deviceID[2];
-    string deviceIDString[2];
-    ofxButton toggleCamADevice;
-    ofxButton toggleCamBDevice;
+    ofxPanel guiCamera;
+    ofxIntSlider toggleCam[2];
     ofxButton refreshCamBtn;
     ofxToggle swapCams;
+    ofxFloatSlider scaleCams;
     
     // Shader Stuff
+    ofxPanel guiShaderSketch;
     ofxFloatSlider shadeThreshold;
     ofxFloatSlider outlineThreshold;
     

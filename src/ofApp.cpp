@@ -13,10 +13,35 @@ void ofApp::setup(){
     
     devices = grab[0].listDevices();
     
+    debug = false;
+    
+    loadBtn.addListener(this, &ofApp::loadSettings);
+    saveBtn.addListener(this, &ofApp::saveSettings);
+    refreshCamBtn.addListener(this, &ofApp::refreshCams);
+    
+    gui.setup();
+    
+    guiAdmin.setup("Admin");
+    guiAdmin.add(saveBtn.setup("Save settings"));
+    guiAdmin.add(loadBtn.setup("Load settings"));
+    gui.add(&guiAdmin);
+    
+    guiCamera.setup("Camera");
+    guiCamera.add(scaleCams.setup("Camera scale", 1.0, 0.25, 2.0));
+    guiCamera.add(toggleCam[0].setup("Toggle Cam A", 0, 0, (int)devices.size()-1));
+    guiCamera.add(toggleCam[1].setup("Toggle Cam B", CLAMP(1, 0, (int)devices.size()-1), 0, (int)devices.size()-1));
+    guiCamera.add(refreshCamBtn.setup("Refresh cams"));
+    guiCamera.add(swapCams.setup("Swap cams", false));
+    gui.add(&guiCamera);
+    
+    guiShaderSketch.setup("Shader-Sketch");
+    guiShaderSketch.add(shadeThreshold.setup("Shading thresh", 0.02, 0.0, 1.0));
+    guiShaderSketch.add(outlineThreshold.setup("Outline thresh", 0.02, 0.0, 1.0));
+    guiShaderSketch.loadFromFile("settings.xml");
+    gui.add(&guiShaderSketch);
+    
     for (int i = 0; i < 2; i++) {
-        deviceID[i] = MIN(i, devices.size()-1);
-        deviceIDString[i] = "Camera ID: " + ofToString(deviceID[i]);
-        grab[i].setDeviceID(deviceID[i]);
+        grab[i].setDeviceID(toggleCam[i]);
         grab[i].setup(CAM_RES_X, CAM_RES_Y);
     }
     
@@ -28,27 +53,6 @@ void ofApp::setup(){
     
     shadeFbo.allocate(SCREEN_W, SCREEN_H, GL_RGBA);
     outlineFbo.allocate(SCREEN_W, SCREEN_H, GL_RGBA);
-    
-    debug = false;
-    
-    loadBtn.addListener(this, &ofApp::loadSettings);
-    saveBtn.addListener(this, &ofApp::saveSettings);
-    
-    toggleCamADevice.addListener(this, &ofApp::toggleCamAID);
-    toggleCamBDevice.addListener(this, &ofApp::toggleCamBID);
-    refreshCamBtn.addListener(this, &ofApp::refreshCams);
-    
-    gui.setup();
-    gui.add(saveBtn.setup("Save settings"));
-    gui.add(loadBtn.setup("Load settings"));
-    gui.add(toggleCamADevice.setup(deviceIDString[0]));
-    gui.add(toggleCamBDevice.setup(deviceIDString[1]));
-    gui.add(refreshCamBtn.setup("Refresh cams"));
-    gui.add(swapCams.setup("Swap cams", false));
-    
-    gui.add(shadeThreshold.setup("Shading thresh", 0.02, 0.0, 0.5));
-    gui.add(outlineThreshold.setup("Outline thresh", 0.02, 0.0, 0.7));
-    gui.loadFromFile("settings.xml");
     
 }
 
@@ -64,23 +68,11 @@ void ofApp::saveSettings()
 }
 
 //--------------------------------------------------------------
-void ofApp::toggleCamAID()
-{
-    deviceID[0] = (deviceID[0]+1)%devices.size();
-    deviceIDString[0] = "Camera ID: " + ofToString(deviceID[0]);
-}
-
-void ofApp::toggleCamBID()
-{
-    deviceID[1] = (deviceID[1]+1)%devices.size();
-    deviceIDString[1] = "Camera ID: " + ofToString(deviceID[1]);
-}
-
 void ofApp::refreshCams()
 {
     for (int i = 0; i < 2; i++) {
         grab[i].close();
-        grab[i].setDeviceID(deviceID[i]);
+        grab[i].setDeviceID(toggleCam[i]);
         grab[i].setup(CAM_RES_X, CAM_RES_Y);
     }
 }
@@ -131,8 +123,21 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
+    ofPushMatrix();
+    ofTranslate(SCREEN_W*0.5, SCREEN_H*0.5);
+    ofScale(scaleCams, scaleCams, 1);
+    ofTranslate(-SCREEN_W*0.5, -SCREEN_H*0.5);
+    
+    ofSetColor(0,0,0,128);
+    ofDrawLine(-1, -1, SCREEN_W+2, -1);
+    ofDrawLine(-1, SCREEN_H+2, SCREEN_W+2, SCREEN_H+2);
+    
+    ofSetColor(255);
     shadeFbo.draw(0, 0);
     outlineFbo.draw(0, 0);
+    
+    ofPopMatrix();
     
     if (debug) {
         ofSetColor(255);
@@ -143,6 +148,7 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if (key == 'd') debug = !debug;
+    if (key == 'f') ofToggleFullscreen();
 }
 
 //--------------------------------------------------------------
