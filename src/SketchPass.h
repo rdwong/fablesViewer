@@ -13,6 +13,9 @@
 
 class SketchPass : public Pass
 {
+    int getTex(int seq) { return (seq+baseTex)%int(hatches.size()); }
+    int baseTex;
+    
 public:
     
     vector<ofImage> hatches;

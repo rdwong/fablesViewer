@@ -32,9 +32,13 @@ public:
     virtual void update(ofTexture & raw)=0;
     virtual void render()=0;
     
-    void toggle() { active = !active; }
-    void toggle(bool state) { active = state; }
+    void enable() { startActions(); active = true; }
+    void disable() { endActions(); active = false; }
     
+protected:
+    
+    virtual void endActions() {}
+    virtual void startActions() {}
 };
 
 #endif

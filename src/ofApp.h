@@ -2,6 +2,7 @@
 
 #include "Globals.h"
 #include "SketchPass.h"
+#include "BSPass.h"
 
 class ofApp : public ofBaseApp{
 
@@ -56,7 +57,9 @@ class ofApp : public ofBaseApp{
     void loadSettings();
     
     // Passes
+    int curPass;
     SketchPass* sketch;
+    BSPass* bitshift;
     
 };
 

@@ -56,8 +56,12 @@ void ofApp::setup(){
     
     // load Passes
     sketch = new SketchPass();
-    sketch->toggle(true);
+    //sketch->toggle(true);
     
+    bitshift = new BSPass();
+    bitshift->enable();
+    
+    curPass = 0;
 }
 
 //--------------------------------------------------------------
@@ -101,6 +105,7 @@ void ofApp::update(){
     }
     
     sketch->runUpdate(rawTexture.getTexture());
+    bitshift->runUpdate(rawTexture.getTexture());
     
 }
 
@@ -119,7 +124,8 @@ void ofApp::draw(){
     ofSetColor(255);
     
     // render current pass here
-    sketch->render();
+    //sketch->render();
+    bitshift->render();
     
     ofPopMatrix();
     

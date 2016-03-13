@@ -11,7 +11,10 @@
 SketchPass::SketchPass()
 {
     
-    for (int i = 0; i < 4; i++)
+    baseTex = 0;
+    
+    ofDirectory dir; dir.listDir("hatches");
+    for (int i = 0; i < dir.size(); i++)
         hatches.push_back(ofImage("hatches/" + ofToString(i) + ".png"));
     
     guiShaderSketch.setup("Shader-Sketch");
@@ -40,10 +43,10 @@ void SketchPass::update(ofTexture & raw)
     
     shadingShader.begin();
     shadingShader.setUniformTexture("tex", raw, 0);
-//    shadingShader.setUniformTexture("hatch1", hatches[0].getTexture(), 1);
-//    shadingShader.setUniformTexture("hatch2", hatches[1].getTexture(), 2);
-//    shadingShader.setUniformTexture("hatch3", hatches[2].getTexture(), 3);
-//    shadingShader.setUniformTexture("hatch4", hatches[3].getTexture(), 4);
+    shadingShader.setUniformTexture("hatch1", hatches[getTex(0)].getTexture(), 1);
+    shadingShader.setUniformTexture("hatch2", hatches[getTex(1)].getTexture(), 2);
+    shadingShader.setUniformTexture("hatch3", hatches[getTex(2)].getTexture(), 3);
+    shadingShader.setUniformTexture("hatch4", hatches[getTex(3)].getTexture(), 4);
     shadingShader.setUniform1f("threshold", shadeThreshold);
     canvas(SCREEN_W, SCREEN_H);
     shadingShader.end();
@@ -61,6 +64,8 @@ void SketchPass::update(ofTexture & raw)
     outlineShader.end();
     
     outlineFbo.end();
+    
+    if (ofGetFrameNum()%7 == 0) baseTex = (baseTex+1)%int(hatches.size());
 }
 
 void SketchPass::render()

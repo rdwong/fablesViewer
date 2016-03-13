@@ -12,6 +12,7 @@
 		1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */; };
 		250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7160245B19131DAE6128 /* ofxCvColorImage.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
+		4AB93FE11C942A8400BE1CE6 /* BSPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AB93FDF1C942A8400BE1CE6 /* BSPass.cpp */; };
 		5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C88333E71C9457E441C33474 /* ofxButton.cpp */; };
 		63020F16C7E8DED980111241 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6151136D101F857DAE12722 /* ofxCvImage.cpp */; };
 		79744B7F1C92987F00F16950 /* SketchPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79744B7D1C92987F00F16950 /* SketchPass.cpp */; };
@@ -112,6 +113,8 @@
 		4A28C46A1C81090400F642BC /* outline.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = outline.vert; path = bin/data/outline.vert; sourceTree = SOURCE_ROOT; };
 		4A90DE6C1C904B8300BC9861 /* angle_outline.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = angle_outline.frag; path = bin/data/angle_outline.frag; sourceTree = SOURCE_ROOT; };
 		4A90DE6D1C904B8300BC9861 /* angle_outline.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = angle_outline.vert; path = bin/data/angle_outline.vert; sourceTree = SOURCE_ROOT; };
+		4AB93FDF1C942A8400BE1CE6 /* BSPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BSPass.cpp; sourceTree = "<group>"; };
+		4AB93FE01C942A8400BE1CE6 /* BSPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPass.h; sourceTree = "<group>"; };
 		4CD2228F2C8116D51179E3A3 /* devmem2d.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = devmem2d.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/core/devmem2d.hpp; sourceTree = SOURCE_ROOT; };
 		4CFA8A81B93736DE82F0090A /* gpumat.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = gpumat.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/core/gpumat.hpp; sourceTree = SOURCE_ROOT; };
 		5105862F1606831E9239FEAF /* simd_functions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = simd_functions.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/device/simd_functions.hpp; sourceTree = SOURCE_ROOT; };
@@ -759,6 +762,8 @@
 				79744B841C92A43C00F16950 /* Pass.h */,
 				79744B7D1C92987F00F16950 /* SketchPass.cpp */,
 				79744B7E1C92987F00F16950 /* SketchPass.h */,
+				4AB93FDF1C942A8400BE1CE6 /* BSPass.cpp */,
+				4AB93FE01C942A8400BE1CE6 /* BSPass.h */,
 				4A28C46B1C81090A00F642BC /* SketchShaders */,
 			);
 			path = src;
@@ -895,6 +900,7 @@
 				79744B7F1C92987F00F16950 /* SketchPass.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				4AB93FE11C942A8400BE1CE6 /* BSPass.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				79744B821C92989D00F16950 /* Globals.cpp in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
