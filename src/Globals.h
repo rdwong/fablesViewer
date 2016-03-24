@@ -36,4 +36,44 @@ static void canvas(float width, float height)
     glEnd();
 }
 
+#define WARP_RES_X  28
+#define WARP_RES_Y  18
+
+static void lensCanvas(float width, float height)
+{
+    glBegin(GL_TRIANGLE_STRIP);
+    
+    float portW = width*0.5;
+    float xInterval = 0.5*width/WARP_RES_X;
+    float yInterval = 0.5*height/WARP_RES_Y;
+    
+    // left half
+    for (int i = 0; i < WARP_RES_X; i++) {
+        float xratio = float(i)/WARP_RES_X;
+        
+        float normalx = xratio*portW;
+        float warpx = portW*0.5*(1 + sin(xratio*PI - HALF_PI));
+        
+        glTexCoord2f(normalx, 0);
+        glVertex2f(warpx, 0);
+        glTexCoord2f(normalx, height);
+        glVertex2f(warpx, height);
+    }
+    
+    // right half
+    for (int i = 0; i < WARP_RES_X; i++) {
+        float xratio = float(i)/WARP_RES_X;
+        
+        float normalx = portW + xratio*portW;
+        float warpx = portW + portW*0.5*(1 + sin(xratio*PI - HALF_PI));
+        
+        glTexCoord2f(normalx, 0);
+        glVertex2f(warpx, 0);
+        glTexCoord2f(normalx, height);
+        glVertex2f(warpx, height);
+    }
+    
+    glEnd();
+}
+
 #endif /* defined(__fablesViewer__Globals__) */

@@ -36,6 +36,7 @@ void ofApp::setup(){
     guiCamera.add(swapCams.setup("Swap cams", false));
     GUI->add(&guiCamera);
     
+    GUI->loadFromFile("settings.xml");
     
     
     for (int i = 0; i < 2; i++) {
@@ -56,10 +57,10 @@ void ofApp::setup(){
     
     // load Passes
     sketch = new SketchPass();
-    //sketch->toggle(true);
+    sketch->enable();
     
     bitshift = new BSPass();
-    bitshift->enable();
+    //bitshift->enable();
     
     curPass = 0;
 }
@@ -95,7 +96,7 @@ void ofApp::update(){
         if (grab[i].isFrameNew()) {
             rawTexture.begin();
             ofPushMatrix();
-            
+            ofSetColor(255);
             if (!swapCams) ofTranslate(i*portW, 0);
             else ofTranslate(portW*(1 - i), 0);
             grab[i].getTexture().drawSubsection(0, 0, portW, portH, offX, offY, portW, portH);
@@ -112,20 +113,26 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
+    ofFill();
+    ofSetColor(0);
+    ofDrawRectangle(0, 0, SCREEN_W, SCREEN_H);
+    
     ofPushMatrix();
     ofTranslate(center);
     ofScale(scaleCams, scaleCams, 1);
     
-    ofSetColor(0,0,0,128);
-    ofNoFill();
-    ofDrawRectangle(-1-SCREEN_W*0.5, -1-SCREEN_H*0.5, SCREEN_W+2, SCREEN_H+2);
+    //ofSetColor(0,0,0,128);
+    //ofNoFill();
+    //ofDrawRectangle(-1-SCREEN_W*0.5, -1-SCREEN_H*0.5, SCREEN_W+2, SCREEN_H+2);
+    ofSetColor(255);
     ofFill();
+    ofDrawRectangle(-SCREEN_W*0.5, -SCREEN_H*0.5, SCREEN_W, SCREEN_H);
     
     ofSetColor(255);
     
     // render current pass here
-    //sketch->render();
-    bitshift->render();
+    sketch->render();
+    //bitshift->render();
     
     ofPopMatrix();
     
@@ -139,6 +146,7 @@ void ofApp::draw(){
 void ofApp::keyPressed(int key){
     if (key == 'd') debug = !debug;
     if (key == 'f') ofToggleFullscreen();
+    if (key == 'p') ofSaveFrame();
 }
 
 //--------------------------------------------------------------
