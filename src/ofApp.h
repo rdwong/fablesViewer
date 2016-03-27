@@ -4,6 +4,8 @@
 #include "SketchPass.h"
 #include "BSPass.h"
 
+//#define TEST_VID
+
 class ofApp : public ofBaseApp{
 
     ofVec2f center;
@@ -32,6 +34,10 @@ class ofApp : public ofBaseApp{
     
     ofVideoGrabber grab[2];
     vector<ofVideoDevice> devices;
+    
+#ifdef TEST_VID
+    ofVideoPlayer testVid;
+#endif
     
     int portW;
     int portH;

@@ -10,17 +10,33 @@
 #define BSPass_h
 
 #include "Pass.h"
+#include "BlurShaderWrapper.h"
 
 class BSPass : public Pass
 {
 public:
     
-    ofFbo buffer;
-    ofFbo fbo;
     bool bFirstframe;
+    
+    ofFbo diffFrame;
+    ofFbo diffBuffer;
+    ofFbo diffFadeFbo;
+    ofFbo diffFadeBuffer;
+    ofFbo bitshiftFbo;
+    ofFbo fbo;
+    
+    ofTexture prevFrame;
+    
+    ofShader difference_map;
+    ofShader fade_mask;
+    
+    BlurShaders blur;
     
     ofxPanel BSPanel;
     ofxFloatSlider fadeRatio;
+    ofxFloatSlider blurAmount;
+    ofxFloatSlider blurRadius;
+    ofxFloatSlider diffThreshold;
     
     BSPass();
     

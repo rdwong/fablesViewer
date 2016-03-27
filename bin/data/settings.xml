@@ -2,8 +2,8 @@
 	<Admin/>
 	<Camera>
 		<Camera_scale>0.741071</Camera_scale>
-		<Toggle_Cam_A>1</Toggle_Cam_A>
-		<Toggle_Cam_B>2</Toggle_Cam_B>
+		<Toggle_Cam_A>0</Toggle_Cam_A>
+		<Toggle_Cam_B>0</Toggle_Cam_B>
 		<Swap_cams>0</Swap_cams>
 	</Camera>
 	<Shader-Sketch>
@@ -11,7 +11,10 @@
 		<Outline_thresh>0.19898</Outline_thresh>
 	</Shader-Sketch>
 	<Bitshift>
-		<Fade_Ratio>128</Fade_Ratio>
+		<Fade_Ratio>128.801</Fade_Ratio>
+	<Diff_threshold>0.255102</Diff_threshold>
+	<Blur_amount>1.9898</Blur_amount>
+	<Blur_radius>5</Blur_radius>
 	</Bitshift>
 <Settings/>
 </Settings>

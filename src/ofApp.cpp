@@ -36,33 +36,44 @@ void ofApp::setup(){
     guiCamera.add(swapCams.setup("Swap cams", false));
     GUI->add(&guiCamera);
     
-    GUI->loadFromFile("settings.xml");
-    
-    
-    for (int i = 0; i < 2; i++) {
-        grab[i].setDeviceID(toggleCam[i]);
-        grab[i].setup(CAM_RES_X, CAM_RES_Y);
-    }
-    
     // Work out various dimensions
     center = ofVec2f(ofGetWidth()*0.5, ofGetHeight()*0.5);
     portW = (int)SCREEN_W*0.5;
     portH = SCREEN_H;
     
+    // setup cameras
+#ifndef TEST_VID
+    for (int i = 0; i < 2; i++) {
+        grab[i].setDeviceID(toggleCam[i]);
+        grab[i].setup(CAM_RES_X, CAM_RES_Y);
+    }
+    
+    // determine offsets
     offX = 0.5*(grab[0].getWidth() - portW);
     offY = 0.5*(grab[0].getHeight() - portH);
+#else
+    testVid.load("test.mov");
+    testVid.play();
+    
+    offX = 0.5*(CAM_RES_X*0.5 - portW);
+    offY = 0.5*(CAM_RES_Y - portH);
+#endif
+    
     
     rawTexture.allocate(SCREEN_W, SCREEN_H, GL_RGBA);
     buffer.allocate(SCREEN_W, SCREEN_H, GL_RGBA);
     
     // load Passes
     sketch = new SketchPass();
-    sketch->enable();
+    //sketch->enable();
     
     bitshift = new BSPass();
-    //bitshift->enable();
+    bitshift->enable();
     
     curPass = 0;
+    
+    GUI->loadFromFile("settings.xml");
+    
 }
 
 //--------------------------------------------------------------
@@ -89,7 +100,11 @@ void ofApp::refreshCams()
 //--------------------------------------------------------------
 void ofApp::update(){
     
+    bool newFrames = false;
+    
+#ifndef TEST_VID
     // update grabbers and pass textures to buffer
+    
     for (int i = 0; i < 2; i++) {
         grab[i].update();
         
@@ -102,12 +117,25 @@ void ofApp::update(){
             grab[i].getTexture().drawSubsection(0, 0, portW, portH, offX, offY, portW, portH);
             ofPopMatrix();
             rawTexture.end();
+            newFrames = true;
         }
     }
     
-    sketch->runUpdate(rawTexture.getTexture());
-    bitshift->runUpdate(rawTexture.getTexture());
+#else
+    testVid.update();
+    if (testVid.isFrameNew()) {
+        newFrames = true;
+        rawTexture.begin();
+        ofSetColor(255);
+        testVid.draw(0, 0, SCREEN_W, SCREEN_H);
+        rawTexture.end();
+    }
+#endif
     
+    if (newFrames) {
+        bitshift->runUpdate(rawTexture.getTexture());
+        sketch->runUpdate(rawTexture.getTexture());
+    }
 }
 
 //--------------------------------------------------------------
@@ -121,9 +149,6 @@ void ofApp::draw(){
     ofTranslate(center);
     ofScale(scaleCams, scaleCams, 1);
     
-    //ofSetColor(0,0,0,128);
-    //ofNoFill();
-    //ofDrawRectangle(-1-SCREEN_W*0.5, -1-SCREEN_H*0.5, SCREEN_W+2, SCREEN_H+2);
     ofSetColor(255);
     ofFill();
     ofDrawRectangle(-SCREEN_W*0.5, -SCREEN_H*0.5, SCREEN_W, SCREEN_H);
@@ -131,14 +156,16 @@ void ofApp::draw(){
     ofSetColor(255);
     
     // render current pass here
-    sketch->render();
-    //bitshift->render();
+    //sketch->render();
+    bitshift->render();
+    //rawTexture.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
     
     ofPopMatrix();
     
     if (debug) {
         ofSetColor(255);
         GUI->draw();
+        ofDrawBitmapString(ofToString(ofGetFrameRate()), 0, 14);
     }
 }
 
