@@ -499,9 +499,6 @@
 			children = (
 				4A90DE6C1C904B8300BC9861 /* angle_outline.frag */,
 				4A90DE6D1C904B8300BC9861 /* angle_outline.vert */,
-				4ADD88251CA582DD009A27CA /* BlurShaderWrapper.cpp */,
-				4ADD88261CA582DD009A27CA /* BlurShaderWrapper.h */,
-				4A9EAD1C1CA6436C00DEB538 /* blurShader */,
 			);
 			name = Defunct;
 			sourceTree = "<group>";
@@ -509,6 +506,9 @@
 		4ADD881A1CA42C6D009A27CA /* BSShaders */ = {
 			isa = PBXGroup;
 			children = (
+				4ADD88251CA582DD009A27CA /* BlurShaderWrapper.cpp */,
+				4ADD88261CA582DD009A27CA /* BlurShaderWrapper.h */,
+				4A9EAD1C1CA6436C00DEB538 /* blurShader */,
 				4ADD881C1CA55173009A27CA /* fade_mask.frag */,
 				4ADD881D1CA55173009A27CA /* fade_mask.vert */,
 				4ADD88181CA42C66009A27CA /* difference_map.frag */,

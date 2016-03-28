@@ -15,17 +15,17 @@ void main(void) {
         
         vec2 coord = texCoordVarying + vec2(0.0, amt*(i - radius));
         vec4 px1 = texture2DRect(src_tex_unit0, coord);
-        if (px1.r < level) {
+        //if (px1.r < level) {
             color += i * px1;
             parts += i;
-        }
+        //}
         
         coord = texCoordVarying + vec2(0.0, amt*i);
         vec4 px2 = texture2DRect(src_tex_unit0, coord);
-        if (px2.r < level) {
+        //if (px2.r < level) {
             color += i * px2;
             parts += i;
-        }
+        //}
     }
     
     color /= parts;

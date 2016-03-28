@@ -71,7 +71,7 @@ void BSPass::update(ofTexture & raw)
     diffFadeBuffer.end();
     
     // 3 -- Blur fadeMask
-    blur.begin(blurAmount, blurRadius, 2);
+    blur.begin(blurAmount, blurRadius, 3);
     diffFadeFbo.draw(0, 0);
     blur.end(false);
     
@@ -96,6 +96,7 @@ void BSPass::update(ofTexture & raw)
         fade_mask.begin();
         fade_mask.setUniformTexture("bitshift", bitshiftFbo.getTexture(), 0);
         fade_mask.setUniformTexture("fademap", blur.getTexture(), 1);
+        fade_mask.setUniform1f("iGlobalTime", ofGetFrameNum());
         canvas(SCREEN_W, SCREEN_H);
         fade_mask.end();
     }
@@ -115,6 +116,6 @@ void BSPass::update(ofTexture & raw)
 void BSPass::render()
 {
     ofSetColor(255);
-    //blur.getTexture().draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
     fbo.draw(0, 0);
+    //diffFadeFbo.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
 }

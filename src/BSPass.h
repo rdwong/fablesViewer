@@ -12,6 +12,8 @@
 #include "Pass.h"
 #include "BlurShaderWrapper.h"
 
+#define NUM_STEPS
+
 class BSPass : public Pass
 {
 public:
