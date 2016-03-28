@@ -71,7 +71,6 @@ void ofApp::setup(){
     curPass = 0;
     
     GUI->loadFromFile("settings.xml");
-    refreshCams();
     
 #ifndef TEST_VID
     for (int i = 0; i < 2; i++) {
@@ -163,10 +162,10 @@ void ofApp::draw(){
     ofSetColor(255);
     
     // render current pass here
-    rawTexture.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
+    //rawTexture.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
     //sketch->render();
     //bitshift->render();
-    //points->render();
+    points->render();
     
     ofPopMatrix();
     
