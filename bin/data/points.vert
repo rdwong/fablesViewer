@@ -1,8 +1,8 @@
 #version 120
 
-varying vec2 texCoordVarying;
+varying vec2 fragCoord;
 
 void main() {
-    texCoordVarying = gl_MultiTexCoord0.xy;
+    fragCoord = gl_MultiTexCoord0.xy;
     gl_Position = ftransform();
 }

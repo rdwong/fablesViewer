@@ -15,6 +15,7 @@ void ofApp::setup(){
     devices = grab[0].listDevices();
     
     debug = false;
+    bShowRaw = false;
     
     loadBtn.addListener(this, &ofApp::loadSettings);
     saveBtn.addListener(this, &ofApp::saveSettings);
@@ -60,12 +61,10 @@ void ofApp::setup(){
     
     // load Passes
     sketch = new SketchPass();
-    //sketch->enable();
-    
     bitshift = new BSPass();
-    //bitshift->enable();
-    
     points = new PointPass();
+    //sketch->enable();
+    //bitshift->enable();
     points->enable();
     
     curPass = 0;
@@ -162,10 +161,10 @@ void ofApp::draw(){
     ofSetColor(255);
     
     // render current pass here
-    //rawTexture.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
     //sketch->render();
     //bitshift->render();
     points->render();
+    if (bShowRaw) rawTexture.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
     
     ofPopMatrix();
     
@@ -181,6 +180,7 @@ void ofApp::keyPressed(int key){
     if (key == 'd') debug = !debug;
     if (key == 'f') ofToggleFullscreen();
     if (key == 'p') ofSaveFrame();
+    if (key == ' ') bShowRaw = !bShowRaw;
 }
 
 //--------------------------------------------------------------

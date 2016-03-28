@@ -2,27 +2,49 @@
 #extension GL_ARB_texture_rectangle : enable
 
 uniform sampler2DRect tex;
-uniform float interval;
+uniform float threshold;
+uniform float tileSize;
+uniform float time;
 
-varying vec2 texCoordVarying;
+varying vec2 fragCoord;
 
-const float threshold = 0.3;
+vec2 get_source_pos()
+{
+    float xp = tileSize*floor(fragCoord.x/tileSize) + tileSize*0.5;
+    float yp = tileSize*floor(fragCoord.y/tileSize) + tileSize*0.5;
+    return vec2(xp, yp);
+}
+
+float dist(vec2 a, vec2 b)
+{
+    vec2 c = a - b;
+    return sqrt(c.x*c.x + c.y*c.y);
+}
 
 void main()
 {
-    vec4 px = texture2DRect(tex, texCoordVarying);
-    float intensity = (px.r + px.g + px.b)/3.0;
+    // set default color
+    vec4 color = vec4(1.0, 1.0, 1.0, 1.0);
     
+    // get source pos and distance from src pos
+    vec2 srcPos = get_source_pos();
+    float d = dist(srcPos, fragCoord);
+    
+    // get source intensity
+    vec4 px = texture2DRect(tex, srcPos);
+    float intensity = (px.r + px.g + px.b)/3.0;
     if (intensity > threshold) intensity = 1.0;
     else {
         float upval = (intensity)/threshold;
-        intensity = floor(6.0*upval);
-        float level = int(mod(intensity, 4.0));
-        intensity /= 6.0;
+        intensity = (floor(5.0*upval))/5.0;
+    }
+    float spotSize = tileSize*0.5*(1 - intensity);
+    
+    // check if px is within range
+    if (d < spotSize) {
+        color = px;
     }
     
-    float value = clamp(intensity, 0.0, 1.0);
-    vec4 color = vec4(value, value, value, 1.0);
-    
     gl_FragColor = color;
+    
 }

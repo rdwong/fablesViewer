@@ -1,7 +1,7 @@
 #version 120
 #extension GL_ARB_texture_rectangle : enable
 
-uniform sampler2DRect bitshift;
+//uniform sampler2DRect bitshift;
 uniform sampler2DRect fademap;
 uniform float iGlobalTime;
 varying vec2 fragCoord;
@@ -19,7 +19,7 @@ float getNoise(vec3 v);
 
 void main()
 {
-    vec4 color = texture2DRect(bitshift, fragCoord);
+    vec4 color = vec4(0.0, 0.0, 0.0, 1.0);//texture2DRect(bitshift, fragCoord);
     vec4 fadepx = texture2DRect(fademap, fragCoord);
     float level = 1 - (1 - fadepx.r)*(1 - fadepx.r)*(1 - fadepx.r);
     
@@ -32,9 +32,9 @@ void main()
         float val = fadepx.r*noise;
         val = 1 - (1 - val)*(1 - val)*(1 - val);
         
-        color.r = color.r*val + (1.0 - val);
-        color.g = color.g*val + (1.0 - val);
-        color.b = color.b*val + (1.0 - val);
+        color.r = val;//color.r*val + (1.0 - val);
+        color.g = val;//color.g*val + (1.0 - val);
+        color.b = val;//color.b*val + (1.0 - val);
     }
     
     gl_FragColor = color;

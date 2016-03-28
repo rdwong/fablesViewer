@@ -69,7 +69,7 @@ void BSPass::update(ofTexture & raw)
     diffFadeFbo.draw(0, 0);
     blur.end(false);
     
-    // 4 --- Bitshift
+    /*// 4 --- Bitshift
     bitshiftFbo.begin();
     if (bFirstframe) {
         ofSetColor(255,255,255,255);
@@ -78,7 +78,7 @@ void BSPass::update(ofTexture & raw)
     }
     ofSetColor(255,255,255,fadeRatio);
     raw.draw(0, 0);
-    bitshiftFbo.end();
+    bitshiftFbo.end();*/
     
     //5 --- composite pass
     fbo.begin();
@@ -88,7 +88,7 @@ void BSPass::update(ofTexture & raw)
         raw.draw(0, 0);
     } else {
         fade_mask.begin();
-        fade_mask.setUniformTexture("bitshift", bitshiftFbo.getTexture(), 0);
+        //fade_mask.setUniformTexture("bitshift", bitshiftFbo.getTexture(), 0);
         fade_mask.setUniformTexture("fademap", blur.getTexture(), 1);
         fade_mask.setUniform1f("iGlobalTime", ofGetFrameNum());
         canvas(SCREEN_W, SCREEN_H);

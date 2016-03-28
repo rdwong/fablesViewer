@@ -24,7 +24,7 @@ public:
     RGBFbo diffBuffer;
     RGBFbo diffFadeFbo;
     RGBFbo diffFadeBuffer;
-    RGBFbo bitshiftFbo;
+    //RGBFbo bitshiftFbo;
     RGBFbo fbo;
     
     ofTexture prevFrame;

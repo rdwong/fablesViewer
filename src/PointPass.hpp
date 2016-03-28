@@ -19,7 +19,8 @@ public:
     RGBFbo fbo;
     
     ofxPanel pointPanel;
-    ofxFloatSlider interval;
+    ofxFloatSlider threshold;
+    ofxFloatSlider tileSize;
     
     PointPass();
     

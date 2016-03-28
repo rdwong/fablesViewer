@@ -3,7 +3,7 @@
 	<Camera>
 		<Camera_scale>0.741071</Camera_scale>
 		<Toggle_Cam_A>0</Toggle_Cam_A>
-		<Toggle_Cam_B>2</Toggle_Cam_B>
+		<Toggle_Cam_B>0</Toggle_Cam_B>
 		<Swap_cams>0</Swap_cams>
 	</Camera>
 	<Shader-Sketch>
@@ -11,7 +11,7 @@
 		<Outline_thresh>0.19898</Outline_thresh>
 	</Shader-Sketch>
 	<Bitshift>
-		<Fade_Ratio>41.6327</Fade_Ratio>
+		<Fade_Ratio>54.6429</Fade_Ratio>
 	<Diff_threshold>0.183673</Diff_threshold>
 	<Blur_amount>0.306122</Blur_amount>
 	<Blur_radius>2.39796</Blur_radius>
@@ -19,5 +19,7 @@
 <Settings/>
 <Point_Pass>
 		<Interval>0.1</Interval>
+	<Threshold>0.440816</Threshold>
+	<Tile_size>4.94898</Tile_size>
 	</Point_Pass>
 </Settings>

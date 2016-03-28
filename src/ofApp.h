@@ -5,7 +5,7 @@
 #include "BSPass.h"
 #include "PointPass.hpp"
 
-//#define TEST_VID
+#define TEST_VID
 
 class ofApp : public ofBaseApp{
 
@@ -29,6 +29,7 @@ class ofApp : public ofBaseApp{
     void ofExit();
     
     bool debug;
+    bool bShowRaw;
     
     ofFbo rawTexture;
     ofFbo buffer;
