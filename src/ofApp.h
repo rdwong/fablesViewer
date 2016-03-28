@@ -3,6 +3,7 @@
 #include "Globals.h"
 #include "SketchPass.h"
 #include "BSPass.h"
+#include "PointPass.hpp"
 
 //#define TEST_VID
 
@@ -66,6 +67,7 @@ class ofApp : public ofBaseApp{
     int curPass;
     SketchPass* sketch;
     BSPass* bitshift;
+    PointPass* points;
     
 };
 

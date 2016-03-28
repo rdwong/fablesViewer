@@ -23,8 +23,8 @@ public:
     // Shader Stuff
     ofShader outlineShader;
     ofShader shadingShader;
-    ofFbo shadeFbo;
-    ofFbo outlineFbo;
+    RGBAFbo shadeFbo;
+    RGBAFbo outlineFbo;
     
     ofxPanel guiShaderSketch;
     ofxFloatSlider shadeThreshold;

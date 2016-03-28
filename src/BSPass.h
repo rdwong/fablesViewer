@@ -20,12 +20,12 @@ public:
     
     bool bFirstframe;
     
-    ofFbo diffFrame;
-    ofFbo diffBuffer;
-    ofFbo diffFadeFbo;
-    ofFbo diffFadeBuffer;
-    ofFbo bitshiftFbo;
-    ofFbo fbo;
+    RGBAFbo diffFrame;
+    RGBFbo diffBuffer;
+    RGBFbo diffFadeFbo;
+    RGBFbo diffFadeBuffer;
+    RGBFbo bitshiftFbo;
+    RGBFbo fbo;
     
     ofTexture prevFrame;
     

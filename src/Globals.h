@@ -39,6 +39,17 @@ static void canvas(float width, float height)
 #define WARP_RES_X  28
 #define WARP_RES_Y  18
 
+class RGBFbo : public ofFbo
+{
+public:
+    RGBFbo() { allocate(SCREEN_W, SCREEN_H, GL_RGB); }
+};
+class RGBAFbo : public ofFbo
+{
+public:
+    RGBAFbo() { allocate(SCREEN_W, SCREEN_H, GL_RGBA); }
+};
+
 static void lensCanvas(float width, float height)
 {
     glBegin(GL_TRIANGLE_STRIP);

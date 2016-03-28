@@ -13,12 +13,6 @@ BSPass::BSPass()
     bFirstframe = true;
     
     // setup fbos
-    diffBuffer.allocate(SCREEN_W, SCREEN_H, GL_RGB);
-    diffFrame.allocate(SCREEN_W, SCREEN_H, GL_RGBA);
-    diffFadeBuffer.allocate(SCREEN_W, SCREEN_H, GL_RGB);
-    diffFadeFbo.allocate(SCREEN_W, SCREEN_H, GL_RGB);
-    bitshiftFbo.allocate(SCREEN_W, SCREEN_H, GL_RGB);
-    fbo.allocate(SCREEN_W, SCREEN_H, GL_RGB);
     blur.setup(SCREEN_W, SCREEN_H);
     
     // Set 50% anchor for main output

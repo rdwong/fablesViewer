@@ -23,10 +23,7 @@ SketchPass::SketchPass()
     guiShaderSketch.loadFromFile("settings.xml");
     GUI->add(&guiShaderSketch);
     
-    shadeFbo.allocate(SCREEN_W, SCREEN_H, GL_RGBA);
     shadeFbo.setAnchorPercent(0.5, 0.5);
-    
-    outlineFbo.allocate(SCREEN_W, SCREEN_H, GL_RGBA);
     outlineFbo.setAnchorPercent(0.5, 0.5);
     
     // load shaders
