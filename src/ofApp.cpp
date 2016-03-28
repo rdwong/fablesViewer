@@ -43,14 +43,9 @@ void ofApp::setup(){
     
     // setup cameras
 #ifndef TEST_VID
-    for (int i = 0; i < 2; i++) {
-        grab[i].setDeviceID(toggleCam[i]);
-        grab[i].setup(CAM_RES_X, CAM_RES_Y);
-    }
-    
     // determine offsets
-    offX = 0.5*(grab[0].getWidth() - portW);
-    offY = 0.5*(grab[0].getHeight() - portH);
+    offX = 0.5*(CAM_RES_X - portW);
+    offY = 0.5*(CAM_RES_Y - portH);
 #else
     testVid.load("test.mov");
     testVid.play();
@@ -76,6 +71,14 @@ void ofApp::setup(){
     curPass = 0;
     
     GUI->loadFromFile("settings.xml");
+    refreshCams();
+    
+#ifndef TEST_VID
+    for (int i = 0; i < 2; i++) {
+        grab[i].setDeviceID(toggleCam[i]);
+        grab[i].setup(CAM_RES_X, CAM_RES_Y);
+    }
+#endif
     
 }
 
@@ -160,10 +163,10 @@ void ofApp::draw(){
     ofSetColor(255);
     
     // render current pass here
-    //rawTexture.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
+    rawTexture.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
     //sketch->render();
     //bitshift->render();
-    points->render();
+    //points->render();
     
     ofPopMatrix();
     

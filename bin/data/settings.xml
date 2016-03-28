@@ -3,11 +3,11 @@
 	<Camera>
 		<Camera_scale>0.741071</Camera_scale>
 		<Toggle_Cam_A>0</Toggle_Cam_A>
-		<Toggle_Cam_B>0</Toggle_Cam_B>
+		<Toggle_Cam_B>2</Toggle_Cam_B>
 		<Swap_cams>0</Swap_cams>
 	</Camera>
 	<Shader-Sketch>
-		<Shading_thresh>0.55102</Shading_thresh>
+		<Shading_thresh>0.709184</Shading_thresh>
 		<Outline_thresh>0.19898</Outline_thresh>
 	</Shader-Sketch>
 	<Bitshift>
@@ -17,4 +17,7 @@
 	<Blur_radius>2.39796</Blur_radius>
 	</Bitshift>
 <Settings/>
+<Point_Pass>
+		<Interval>0.1</Interval>
+	</Point_Pass>
 </Settings>
