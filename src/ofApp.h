@@ -5,7 +5,9 @@
 #include "BSPass.h"
 #include "PointPass.hpp"
 
+#ifdef TARGET_OSX
 #define TEST_VID
+#endif
 
 class ofApp : public ofBaseApp{
 

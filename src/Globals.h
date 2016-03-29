@@ -14,10 +14,10 @@
 #include "ofxOpenCv.h"
 
 #define SCREEN_W    800
-#define SCREEN_H    450
+#define SCREEN_H    480
 
-#define CAM_RES_X   600
-#define CAM_RES_Y   450
+#define CAM_RES_X   640
+#define CAM_RES_Y   480
 
 #define GUI Globals::gui
 

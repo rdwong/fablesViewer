@@ -4,6 +4,10 @@ openFrameworks.a
 openFrameworksDebug.a
 openFrameworksUniversal.a
 
+bin/*
+*.exe
+*.openDB
+
 #rule to avoid non-official addons going into git
 #see addons/.gitignore
 addons/*

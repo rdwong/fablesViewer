@@ -2,7 +2,7 @@
 	<Admin/>
 	<Camera>
 		<Camera_scale>0.741071</Camera_scale>
-		<Toggle_Cam_A>0</Toggle_Cam_A>
+		<Toggle_Cam_A>1</Toggle_Cam_A>
 		<Toggle_Cam_B>0</Toggle_Cam_B>
 		<Swap_cams>0</Swap_cams>
 	</Camera>
@@ -20,6 +20,6 @@
 <Point_Pass>
 		<Interval>0.1</Interval>
 	<Threshold>0.440816</Threshold>
-	<Tile_size>4.94898</Tile_size>
+	<Tile_size>6.09694</Tile_size>
 	</Point_Pass>
 </Settings>
