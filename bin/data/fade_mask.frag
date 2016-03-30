@@ -21,16 +21,15 @@ void main()
 {
     vec4 color = vec4(0.0, 0.0, 0.0, 1.0);//texture2DRect(bitshift, fragCoord);
     vec4 fadepx = texture2DRect(fademap, fragCoord);
-    float level = 1 - (1 - fadepx.r)*(1 - fadepx.r)*(1 - fadepx.r);
+    float level = 1 - (1 - fadepx.r)*(1 - fadepx.r);
     
     if (level <= 0.99) {
         
         vec2 uv = fragCoord.xy / iResolution.xy;
-        float noise = getNoise(vec3(uv * noiseScale,  iGlobalTime + level*2.0));
+        float noise = getNoise(vec3(uv * noiseScale, level));
         noise = mod(noise, 1.0);
         
-        float val = fadepx.r*noise;
-        val = 1 - (1 - val)*(1 - val)*(1 - val);
+        float val = (1 - fadepx.r)*(1 - fadepx.r)*noise;
         
         color.r = val;//color.r*val + (1.0 - val);
         color.g = val;//color.g*val + (1.0 - val);
@@ -127,7 +126,7 @@ float simplex(vec3 v)
     
     // Gradients: 7x7 points over a square, mapped onto an octahedron.
     // The ring size 17*17 = 289 is close to a multiple of 49 (49*6 = 294)
-    float n_ = 0.142857142857*0.946; // 1.0/7.0
+    float n_ = 0.142857142857*0.95; // 1.0/7.0
     vec3  ns = n_ * D.wyz - D.xzx;
     
     vec4 j = p - 49.0 * floor(p * ns.z * ns.z);  //  mod(p,7*7)

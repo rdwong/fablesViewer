@@ -11,10 +11,10 @@
 		<Outline_thresh>0.19898</Outline_thresh>
 	</Shader-Sketch>
 	<Bitshift>
-		<Fade_Ratio>54.6429</Fade_Ratio>
-	<Diff_threshold>0.183673</Diff_threshold>
-	<Blur_amount>0.306122</Blur_amount>
-	<Blur_radius>2.39796</Blur_radius>
+		<Fade_Ratio>6.5051</Fade_Ratio>
+	<Diff_threshold>0.193878</Diff_threshold>
+	<Blur_amount>1.22449</Blur_amount>
+	<Blur_radius>3.0102</Blur_radius>
 	</Bitshift>
 <Settings/>
 <Point_Pass>

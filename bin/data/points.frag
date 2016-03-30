@@ -28,7 +28,6 @@ void main()
     
     // get source pos and distance from src pos
     vec2 srcPos = get_source_pos();
-    float d = dist(srcPos, fragCoord);
     
     // get source intensity
     vec4 px = texture2DRect(tex, srcPos);
@@ -41,6 +40,7 @@ void main()
     float spotSize = tileSize*0.5*(1 - intensity);
     
     // check if px is within range
+    float d = dist(srcPos, fragCoord);
     if (d < spotSize) {
         color = px;
     }

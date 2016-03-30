@@ -64,8 +64,8 @@ void ofApp::setup(){
     bitshift = new BSPass();
     points = new PointPass();
     //sketch->enable();
-    //bitshift->enable();
-    points->enable();
+    bitshift->enable();
+    //points->enable();
     
     curPass = 0;
     
@@ -161,9 +161,9 @@ void ofApp::draw(){
     ofSetColor(255);
     
     // render current pass here
-    //sketch->render();
-    //bitshift->render();
-    points->render();
+    sketch->draw();
+    bitshift->draw();
+    points->draw();
     if (bShowRaw) rawTexture.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
     
     ofPopMatrix();

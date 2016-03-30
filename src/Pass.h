@@ -29,6 +29,12 @@ public:
         update(raw);
     }
     
+    void draw()
+    {
+        if (!active) return;
+        render();
+    }
+    
     virtual void update(ofTexture & raw)=0;
     virtual void render()=0;
     
