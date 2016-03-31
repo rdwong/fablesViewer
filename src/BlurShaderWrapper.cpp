@@ -32,7 +32,6 @@ void BlurShaders::end(bool draw) {
         
         //apply horizontal blur to fbo1 and put the result in fbo2
         fbo2.begin();
-        ofSetColor(255);
         hShader.begin();
         hShader.setUniform1f("amt", amount);
         hShader.setUniform1f("radius", radius);
@@ -42,7 +41,6 @@ void BlurShaders::end(bool draw) {
         
         //apply vertical blur to fbo2 and put this back in fbo1
         fbo1.begin();
-        ofSetColor(255);
         vShader.begin();
         vShader.setUniform1f("amt", amount);
         vShader.setUniform1f("radius", radius);

@@ -76,12 +76,12 @@ void ofApp::setup(){
     sketch = new SketchPass();
     bitshift = new BSPass();
     points = new PointPass();
-    scene[0] = bitshift;
-    scene[1] = bitshift;
+    scene[0] = points;
+    scene[1] = sketch;
     scene[2] = bitshift;
     
     // first scene!
-    bitshift->enable();
+    points->enable();
     
     GUI->loadFromFile("settings.xml");
     
