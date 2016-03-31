@@ -36,7 +36,7 @@ void SketchPass::update(ofTexture & raw)
 {
     // make shading pass with buffer
     shadeFbo.begin();
-    ofClear(0,0,0,0);
+    ofClear(255);
     
     shadingShader.begin();
     shadingShader.setUniformTexture("tex", raw, 0);

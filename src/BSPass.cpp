@@ -109,7 +109,6 @@ void BSPass::update(ofTexture & raw)
 
 void BSPass::render()
 {
-    ofSetColor(255);
     fbo.draw(0, 0);
-    //diffFadeFbo.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
 }
+

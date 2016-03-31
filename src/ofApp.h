@@ -31,7 +31,6 @@ class ofApp : public ofBaseApp{
     void ofExit();
     
     bool debug;
-    bool bShowRaw;
     
     ofFbo rawTexture;
     ofFbo buffer;
@@ -67,11 +66,17 @@ class ofApp : public ofBaseApp{
     void loadSettings();
     
     // Passes
-    int curPass;
     SketchPass* sketch;
     BSPass* bitshift;
     PointPass* points;
+    Pass* scene[3];
     
+    // Timing
+    int countdownTimer;
+    int curScene;
+    ofEvent<void> timerEndEvent;
+    void endCurrentScene();
+    void nextScene();
 };
 
 

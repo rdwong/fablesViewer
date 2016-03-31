@@ -11,27 +11,54 @@
 
 #include "Globals.h"
 
+#define FADESPEED   0.05
+
 class Pass
 {
     
+protected:
+    
+    float alpha;
+    bool active;
+    bool fade;
+    
+    virtual void endActions() {}
+    virtual void startActions() {}
+    
 public:
     
-    bool active;
+    ofEvent<void> sceneOverEvent;
     
     Pass()
     {
         active = false;
+        fade = false;
+        alpha = 0;
     }
     
     void runUpdate(ofTexture & raw)
     {
         if (!active) return;
+        
+        if (!fade) {
+            alpha += (1 - alpha)*FADESPEED;
+        } else {
+            alpha *= (1 - FADESPEED);
+            if (alpha*255 < 1) {
+                active = false;
+                fade = false;
+                alpha = 0;
+                ofNotifyEvent(sceneOverEvent);
+            }
+        }
+            
         update(raw);
     }
     
     void draw()
     {
         if (!active) return;
+        ofSetColor(255, alpha*255);
         render();
     }
     
@@ -39,12 +66,8 @@ public:
     virtual void render()=0;
     
     void enable() { startActions(); active = true; }
-    void disable() { endActions(); active = false; }
+    void disable() { endActions(); fade = true; }
     
-protected:
-    
-    virtual void endActions() {}
-    virtual void startActions() {}
 };
 
 #endif

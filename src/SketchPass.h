@@ -23,7 +23,7 @@ public:
     // Shader Stuff
     ofShader outlineShader;
     ofShader shadingShader;
-    RGBAFbo shadeFbo;
+    RGBFbo shadeFbo;
     RGBAFbo outlineFbo;
     
     ofxPanel guiShaderSketch;

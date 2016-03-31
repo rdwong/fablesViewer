@@ -6,6 +6,15 @@ void ofApp::ofExit()
     grab[1].close();
 }
 
+
+void ofApp::endCurrentScene() { scene[curScene]->disable(); }
+void ofApp::nextScene()
+{
+    curScene = (curScene + 1)%3;
+    scene[curScene]->enable();
+    countdownTimer = FRAMES_PER_SCENE;
+}
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     
@@ -13,9 +22,7 @@ void ofApp::setup(){
     
     // setup GUI
     devices = grab[0].listDevices();
-    
     debug = false;
-    bShowRaw = false;
     
     loadBtn.addListener(this, &ofApp::loadSettings);
     saveBtn.addListener(this, &ofApp::saveSettings);
@@ -63,11 +70,12 @@ void ofApp::setup(){
     sketch = new SketchPass();
     bitshift = new BSPass();
     points = new PointPass();
-    //sketch->enable();
-    bitshift->enable();
-    //points->enable();
+    scene[0] = points;
+    scene[1] = sketch;
+    scene[2] = bitshift;
     
-    curPass = 0;
+    // first scene!
+    points->enable();
     
     GUI->loadFromFile("settings.xml");
     
@@ -77,6 +85,12 @@ void ofApp::setup(){
         grab[i].setup(CAM_RES_X, CAM_RES_Y);
     }
 #endif
+    
+    countdownTimer = FRAMES_PER_SCENE;
+    curScene = 0;
+    ofAddListener(timerEndEvent, this, &ofApp::endCurrentScene);
+    for (int i = 0; i < 3; i++)
+        ofAddListener(scene[i]->sceneOverEvent, this, &ofApp::nextScene);
     
 }
 
@@ -103,6 +117,12 @@ void ofApp::refreshCams()
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    
+    // Timing stuff
+    if (countdownTimer > 0) {
+        countdownTimer--;
+        if (countdownTimer == 0) ofNotifyEvent(timerEndEvent);
+    }
     
     bool newFrames = false;
     
@@ -158,13 +178,18 @@ void ofApp::draw(){
     ofFill();
     ofDrawRectangle(-SCREEN_W*0.5, -SCREEN_H*0.5, SCREEN_W, SCREEN_H);
     
+    // render cam output
     ofSetColor(255);
+    rawTexture.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
     
     // render current pass here
     sketch->draw();
     bitshift->draw();
     points->draw();
-    if (bShowRaw) rawTexture.draw(-SCREEN_W*0.5, -SCREEN_H*0.5);
+    
+    ofSetColor(128);
+    ofDrawRectangle(-SCREEN_W*0.5, 15-SCREEN_H*0.5, portW*(float(countdownTimer)/FRAMES_PER_SCENE), 4);
+    ofDrawRectangle(0, 15-SCREEN_H*0.5, portW*(float(countdownTimer)/FRAMES_PER_SCENE), 4);
     
     ofPopMatrix();
     
@@ -180,7 +205,6 @@ void ofApp::keyPressed(int key){
     if (key == 'd') debug = !debug;
     if (key == 'f') ofToggleFullscreen();
     if (key == 'p') ofSaveFrame();
-    if (key == ' ') bShowRaw = !bShowRaw;
 }
 
 //--------------------------------------------------------------

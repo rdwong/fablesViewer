@@ -21,6 +21,8 @@
 
 #define GUI Globals::gui
 
+#define FRAMES_PER_SCENE    (60*20)
+
 namespace Globals
 {
     extern ofxPanel* gui;
