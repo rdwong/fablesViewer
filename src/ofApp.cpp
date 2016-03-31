@@ -22,6 +22,9 @@ void ofApp::setup(){
     
     // setup GUI
     devices = grab[0].listDevices();
+	for (int i = 0; i < devices.size(); i++) {
+		ofLog() << i << ": " << devices[i].serialID;
+	}
     debug = false;
     
     loadBtn.addListener(this, &ofApp::loadSettings);
@@ -229,7 +232,7 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+	swapCams = !swapCams;
 }
 
 //--------------------------------------------------------------

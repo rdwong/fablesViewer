@@ -59,8 +59,6 @@ class ofApp : public ofBaseApp{
     ofxFloatSlider scaleCams;
     
     void refreshCams();
-    void toggleCamAID();
-    void toggleCamBID();
     
     void saveSettings();
     void loadSettings();
