@@ -19,6 +19,7 @@ void ofApp::nextScene()
 void ofApp::setup(){
     
     ofBackground(255);
+	ofSetWindowTitle("fablesViewer");
     
     // setup GUI
     devices = grab[0].listDevices();
@@ -121,6 +122,10 @@ void ofApp::refreshCams()
 //--------------------------------------------------------------
 void ofApp::update(){
     
+#ifndef TARGET_OSX
+	if (ofGetFrameNum() == 1) ofSetFullscreen(true);
+#endif
+
     // Timing stuff
     if (countdownTimer > 0) {
         countdownTimer--;
@@ -171,7 +176,7 @@ void ofApp::draw(){
     
     ofFill();
     ofSetColor(0);
-    ofDrawRectangle(0, 0, SCREEN_W, SCREEN_H);
+    ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
     
     ofPushMatrix();
     ofTranslate(center);
