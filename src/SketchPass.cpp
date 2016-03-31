@@ -62,7 +62,7 @@ void SketchPass::update(ofTexture & raw)
     
     outlineFbo.end();
     
-    if (ofGetFrameNum()%7 == 0) baseTex = (baseTex+1)%int(hatches.size());
+    if (ofGetFrameNum()%2 == 0) baseTex = (baseTex+1)%int(hatches.size());
 }
 
 void SketchPass::render()

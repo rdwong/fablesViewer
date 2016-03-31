@@ -19,7 +19,9 @@ void ofApp::nextScene()
 void ofApp::setup(){
     
     ofBackground(255);
+	ofSetFrameRate(60);
 	ofSetWindowTitle("fablesViewer");
+	ofHideCursor();
     
     // setup GUI
     devices = grab[0].listDevices();
@@ -74,12 +76,12 @@ void ofApp::setup(){
     sketch = new SketchPass();
     bitshift = new BSPass();
     points = new PointPass();
-    scene[0] = points;
-    scene[1] = sketch;
+    scene[0] = bitshift;
+    scene[1] = bitshift;
     scene[2] = bitshift;
     
     // first scene!
-    points->enable();
+    bitshift->enable();
     
     GUI->loadFromFile("settings.xml");
     
@@ -91,6 +93,7 @@ void ofApp::setup(){
 #endif
     
     countdownTimer = FRAMES_PER_SCENE;
+    cdRatio = 1;
     curScene = 0;
     ofAddListener(timerEndEvent, this, &ofApp::endCurrentScene);
     for (int i = 0; i < 3; i++)
@@ -129,6 +132,7 @@ void ofApp::update(){
     // Timing stuff
     if (countdownTimer > 0) {
         countdownTimer--;
+        cdRatio = float(countdownTimer)/FRAMES_PER_SCENE;
         if (countdownTimer == 0) ofNotifyEvent(timerEndEvent);
     }
     
@@ -195,9 +199,9 @@ void ofApp::draw(){
     bitshift->draw();
     points->draw();
     
-    ofSetColor(128);
-    ofDrawRectangle(-SCREEN_W*0.5, 15-SCREEN_H*0.5, portW*(float(countdownTimer)/FRAMES_PER_SCENE), 4);
-    ofDrawRectangle(0, 15-SCREEN_H*0.5, portW*(float(countdownTimer)/FRAMES_PER_SCENE), 4);
+    ofSetColor(128, 200 + 55*sin(ofGetFrameNum()*0.1*cdRatio));
+    ofDrawRectangle(-SCREEN_W*0.5, 100-SCREEN_H*0.5, portW*cdRatio, 3);
+    ofDrawRectangle(0, 100-SCREEN_H*0.5, portW*cdRatio, 3);
     
     ofPopMatrix();
     
@@ -210,7 +214,11 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if (key == 'd') debug = !debug;
+	if (key == 'd') {
+		debug = !debug;
+		if (debug) ofShowCursor();
+		else ofHideCursor();
+	}
     if (key == 'f') ofToggleFullscreen();
     if (key == 'p') ofSaveFrame();
 }

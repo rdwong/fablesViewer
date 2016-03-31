@@ -70,6 +70,7 @@ class ofApp : public ofBaseApp{
     Pass* scene[3];
     
     // Timing
+    float cdRatio;
     int countdownTimer;
     int curScene;
     ofEvent<void> timerEndEvent;

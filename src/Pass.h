@@ -58,7 +58,7 @@ public:
     void draw()
     {
         if (!active) return;
-        ofSetColor(255, alpha*255);
+        ofSetColor(255, floor(alpha*255.0));
         render();
     }
     

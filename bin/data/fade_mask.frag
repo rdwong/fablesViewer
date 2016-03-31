@@ -25,7 +25,9 @@ void main()
     
     if (level <= 0.99) {
         
-        vec2 uv = fragCoord.xy / iResolution.xy;
+        vec2 halfCoord = fragCoord;
+        halfCoord.x = mod(fragCoord.x, iResolution.x*0.5);
+        vec2 uv = halfCoord.xy / iResolution.xy;
         float noise = getNoise(vec3(uv * noiseScale, level));
         noise = mod(noise, 1.0);
         

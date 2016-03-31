@@ -2,24 +2,24 @@
 	<Admin/>
 	<Camera>
 		<Camera_scale>0.741071</Camera_scale>
-		<Toggle_Cam_A>1</Toggle_Cam_A>
-		<Toggle_Cam_B>0</Toggle_Cam_B>
+		<Toggle_Cam_A>0</Toggle_Cam_A>
+		<Toggle_Cam_B>1</Toggle_Cam_B>
 		<Swap_cams>0</Swap_cams>
 	</Camera>
 	<Shader-Sketch>
-		<Shading_thresh>0.709184</Shading_thresh>
-		<Outline_thresh>0.19898</Outline_thresh>
+		<Shading_thresh>0.469388</Shading_thresh>
+		<Outline_thresh>0.229592</Outline_thresh>
 	</Shader-Sketch>
 	<Bitshift>
-		<Fade_Ratio>6.5051</Fade_Ratio>
-	<Diff_threshold>0.193878</Diff_threshold>
-	<Blur_amount>1.22449</Blur_amount>
+		<Fade_Ratio>9.10714</Fade_Ratio>
+	<Diff_threshold>0.234694</Diff_threshold>
+	<Blur_amount>1.27551</Blur_amount>
 	<Blur_radius>3.0102</Blur_radius>
 	</Bitshift>
 <Settings/>
 <Point_Pass>
 		<Interval>0.1</Interval>
-	<Threshold>0.440816</Threshold>
-	<Tile_size>6.09694</Tile_size>
+	<Threshold>0.8</Threshold>
+	<Tile_size>5.36225</Tile_size>
 	</Point_Pass>
 </Settings>
