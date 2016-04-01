@@ -20,7 +20,9 @@ public:
     
     ofxPanel pointPanel;
     ofxFloatSlider threshold;
-    ofxFloatSlider tileSize;
+    //ofxFloatSlider tileSize;
+    
+    float tileSize;
     
     PointPass();
     

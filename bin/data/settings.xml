@@ -8,18 +8,18 @@
 	</Camera>
 	<Shader-Sketch>
 		<Shading_thresh>0.469388</Shading_thresh>
-		<Outline_thresh>0.229592</Outline_thresh>
+		<Outline_thresh>0.576531</Outline_thresh>
 	</Shader-Sketch>
 	<Bitshift>
 		<Fade_Ratio>9.10714</Fade_Ratio>
 	<Diff_threshold>0.234694</Diff_threshold>
-	<Blur_amount>1.27551</Blur_amount>
-	<Blur_radius>3.0102</Blur_radius>
+	<Blur_amount>1.12245</Blur_amount>
+	<Blur_radius>2.04082</Blur_radius>
 	</Bitshift>
 <Settings/>
 <Point_Pass>
 		<Interval>0.1</Interval>
 	<Threshold>0.8</Threshold>
-	<Tile_size>5.36225</Tile_size>
+	<Tile_size>5.40816</Tile_size>
 	</Point_Pass>
 </Settings>

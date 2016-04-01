@@ -18,7 +18,6 @@ class Pass
     
 protected:
     
-    float alpha;
     bool active;
     bool fade;
     
@@ -26,6 +25,8 @@ protected:
     virtual void startActions() {}
     
 public:
+    
+    float alpha;
     
     ofEvent<void> sceneOverEvent;
     

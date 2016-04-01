@@ -15,11 +15,15 @@ PointPass::PointPass()
     
     GUI->add(pointPanel.setup("Point Pass"));
     pointPanel.add(threshold.setup("Threshold", 0.3, 0.0, 0.8));
-    pointPanel.add(tileSize.setup("Tile size", 5, 1.0, 10.0));
+    //pointPanel.add(tileSize.setup("Tile size", 5, 1.0, 10.0));
+    
+    tileSize = 5;
 }
 
 void PointPass::update(ofTexture & raw)
 {
+    tileSize = 10 + 3*sin(ofGetFrameNum()*0.01);
+    
     fbo.begin();
     points.begin();
     points.setUniform1f("threshold", threshold);

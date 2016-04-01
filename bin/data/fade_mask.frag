@@ -6,7 +6,7 @@ uniform sampler2DRect fademap;
 uniform float iGlobalTime;
 varying vec2 fragCoord;
 
-const vec2 iResolution = vec2(800.0, 450.0);
+const vec2 iResolution = vec2(400.0, 480.0);
 const int noiseSwirlSteps = 2;
 const float noiseSwirlValue = 1.2;
 const float noiseSwirlStepValue = noiseSwirlValue / float(noiseSwirlSteps);
@@ -26,7 +26,7 @@ void main()
     if (level <= 0.99) {
         
         vec2 halfCoord = fragCoord;
-        halfCoord.x = mod(fragCoord.x, iResolution.x*0.5);
+        halfCoord.x = mod(fragCoord.x, iResolution.x);
         vec2 uv = halfCoord.xy / iResolution.xy;
         float noise = getNoise(vec3(uv * noiseScale, level));
         noise = mod(noise, 1.0);

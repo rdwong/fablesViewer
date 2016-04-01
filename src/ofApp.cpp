@@ -6,15 +6,6 @@ void ofApp::ofExit()
     grab[1].close();
 }
 
-
-void ofApp::endCurrentScene() { scene[curScene]->disable(); }
-void ofApp::nextScene()
-{
-    curScene = (curScene + 1)%3;
-    scene[curScene]->enable();
-    countdownTimer = FRAMES_PER_SCENE;
-}
-
 //--------------------------------------------------------------
 void ofApp::setup(){
     
@@ -110,6 +101,14 @@ void ofApp::loadSettings()
 void ofApp::saveSettings()
 {
     GUI->saveToFile("settings.xml");
+}
+
+void ofApp::endCurrentScene() { scene[curScene]->disable(); }
+void ofApp::nextScene()
+{
+    curScene = (curScene + 1)%3;
+    scene[curScene]->enable();
+    countdownTimer = FRAMES_PER_SCENE;
 }
 
 //--------------------------------------------------------------
@@ -221,6 +220,10 @@ void ofApp::keyPressed(int key){
 	}
     if (key == 'f') ofToggleFullscreen();
     if (key == 'p') ofSaveFrame();
+    if (key == ' ') {
+        countdownTimer = 1;
+        scene[curScene]->alpha = 0.05;
+    }
 }
 
 //--------------------------------------------------------------

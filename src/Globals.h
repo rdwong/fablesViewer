@@ -21,7 +21,7 @@
 
 #define GUI Globals::gui
 
-#define FRAMES_PER_SCENE    (60*20)
+#define FRAMES_PER_SCENE    (60*30)
 
 namespace Globals
 {
