@@ -42,7 +42,7 @@ void main()
     // check if px is within range
     float d = dist(srcPos, fragCoord);
     if (d < spotSize) {
-        color = px;
+        color = vec4(1-(1-px.r)*(1-px.r), 1-(1-px.g)*(1-px.g), 1-(1-px.b)*(1-px.b), 1.0);
     }
     
     gl_FragColor = color;

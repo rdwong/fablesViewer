@@ -198,9 +198,9 @@ void ofApp::draw(){
     bitshift->draw();
     points->draw();
     
-    ofSetColor(128, 200 + 55*sin(ofGetFrameNum()*0.1*cdRatio));
-    ofDrawRectangle(-SCREEN_W*0.5, 100-SCREEN_H*0.5, portW*cdRatio, 3);
-    ofDrawRectangle(0, 100-SCREEN_H*0.5, portW*cdRatio, 3);
+    ofSetColor(200 + 55*sin(ofGetFrameNum()*0.1*cdRatio));
+    ofDrawRectangle((1 - cdRatio)*portW*0.5-SCREEN_W*0.5, 120-SCREEN_H*0.5, portW*cdRatio, 2);
+    ofDrawRectangle((1 - cdRatio)*portW*0.5, 120-SCREEN_H*0.5, portW*cdRatio, 2);
     
     ofPopMatrix();
     

@@ -22,7 +22,7 @@ PointPass::PointPass()
 
 void PointPass::update(ofTexture & raw)
 {
-    tileSize = 10 + 3*sin(ofGetFrameNum()*0.01);
+    tileSize = 8 + 3*sin(ofGetFrameNum()*0.01);
     
     fbo.begin();
     points.begin();
