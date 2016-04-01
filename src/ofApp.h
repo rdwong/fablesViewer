@@ -4,6 +4,7 @@
 #include "SketchPass.h"
 #include "BSPass.h"
 #include "PointPass.hpp"
+#include "liquifyPass.h"
 
 #ifdef TARGET_OSX
 #define TEST_VID
@@ -64,10 +65,11 @@ class ofApp : public ofBaseApp{
     void loadSettings();
     
     // Passes
+    LiquifyPass* liquify;
     SketchPass* sketch;
     BSPass* bitshift;
     PointPass* points;
-    Pass* scene[3];
+    Pass* scene[4];
     
     // Timing
     float cdRatio;

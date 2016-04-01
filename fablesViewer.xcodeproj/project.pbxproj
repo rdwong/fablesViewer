@@ -17,6 +17,7 @@
 		4ADD88271CA582DD009A27CA /* BlurShaderWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD88251CA582DD009A27CA /* BlurShaderWrapper.cpp */; };
 		5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C88333E71C9457E441C33474 /* ofxButton.cpp */; };
 		63020F16C7E8DED980111241 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6151136D101F857DAE12722 /* ofxCvImage.cpp */; };
+		794322981CAE3A1300269DBE /* liquifyPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 794322961CAE3A1300269DBE /* liquifyPass.cpp */; };
 		79744B7F1C92987F00F16950 /* SketchPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79744B7D1C92987F00F16950 /* SketchPass.cpp */; };
 		79744B821C92989D00F16950 /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79744B801C92989D00F16950 /* Globals.cpp */; };
 		837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15F2C6477A769C03A56D1401 /* ofxSlider.cpp */; };
@@ -161,6 +162,10 @@
 		758F19335D4E46A5E0DE449F /* kdtree_single_index.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = kdtree_single_index.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/kdtree_single_index.h; sourceTree = SOURCE_ROOT; };
 		7673F0AA19794A4C9517CF14 /* ts.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ts.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/ts/ts.hpp; sourceTree = SOURCE_ROOT; };
 		78D67A00EB899FAC09430597 /* ofxLabel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLabel.cpp; path = ../../../addons/ofxGui/src/ofxLabel.cpp; sourceTree = SOURCE_ROOT; };
+		794322961CAE3A1300269DBE /* liquifyPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = liquifyPass.cpp; sourceTree = "<group>"; };
+		794322971CAE3A1300269DBE /* liquifyPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = liquifyPass.h; sourceTree = "<group>"; };
+		794322991CAE3AB400269DBE /* liquify.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = liquify.frag; path = bin/data/liquify.frag; sourceTree = SOURCE_ROOT; };
+		7943229A1CAE3AB400269DBE /* liquify.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = liquify.vert; path = bin/data/liquify.vert; sourceTree = SOURCE_ROOT; };
 		79744B771C91BD5A00F16950 /* shading.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = shading.frag; path = bin/data/shading.frag; sourceTree = SOURCE_ROOT; };
 		79744B781C91BD5A00F16950 /* shading.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = shading.vert; path = bin/data/shading.vert; sourceTree = SOURCE_ROOT; };
 		79744B7D1C92987F00F16950 /* SketchPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SketchPass.cpp; sourceTree = "<group>"; };
@@ -823,6 +828,10 @@
 				4AB93FE01C942A8400BE1CE6 /* BSPass.h */,
 				4A317C721CA8E4F400076B20 /* PointPass.cpp */,
 				4A317C731CA8E4F400076B20 /* PointPass.hpp */,
+				794322961CAE3A1300269DBE /* liquifyPass.cpp */,
+				794322971CAE3A1300269DBE /* liquifyPass.h */,
+				794322991CAE3AB400269DBE /* liquify.frag */,
+				7943229A1CAE3AB400269DBE /* liquify.vert */,
 				4A317C751CA8E63600076B20 /* Points */,
 				4AB5EC911CA6386500E69455 /* Defunct */,
 				4ADD881A1CA42C6D009A27CA /* BSShaders */,
@@ -961,6 +970,7 @@
 			files = (
 				4ADD88271CA582DD009A27CA /* BlurShaderWrapper.cpp in Sources */,
 				79744B7F1C92987F00F16950 /* SketchPass.cpp in Sources */,
+				794322981CAE3A1300269DBE /* liquifyPass.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				4AB93FE11C942A8400BE1CE6 /* BSPass.cpp in Sources */,

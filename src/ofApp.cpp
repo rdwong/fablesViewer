@@ -64,15 +64,17 @@ void ofApp::setup(){
     buffer.allocate(SCREEN_W, SCREEN_H, GL_RGBA);
     
     // load Passes
+    liquify = new LiquifyPass();
     sketch = new SketchPass();
     bitshift = new BSPass();
     points = new PointPass();
-    scene[0] = points;
-    scene[1] = sketch;
-    scene[2] = bitshift;
+    scene[0] = liquify;
+    scene[1] = points;
+    scene[2] = sketch;
+    scene[3] = bitshift;
     
     // first scene!
-    points->enable();
+    liquify->enable();
     
     GUI->loadFromFile("settings.xml");
     
@@ -87,7 +89,7 @@ void ofApp::setup(){
     cdRatio = 1;
     curScene = 0;
     ofAddListener(timerEndEvent, this, &ofApp::endCurrentScene);
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 4; i++)
         ofAddListener(scene[i]->sceneOverEvent, this, &ofApp::nextScene);
     
 }
@@ -106,7 +108,7 @@ void ofApp::saveSettings()
 void ofApp::endCurrentScene() { scene[curScene]->disable(); }
 void ofApp::nextScene()
 {
-    curScene = (curScene + 1)%3;
+    curScene = (curScene + 1)%4;
     scene[curScene]->enable();
     countdownTimer = FRAMES_PER_SCENE;
 }
@@ -171,6 +173,7 @@ void ofApp::update(){
         bitshift->runUpdate(rawTexture.getTexture());
         sketch->runUpdate(rawTexture.getTexture());
         points->runUpdate(rawTexture.getTexture());
+        liquify->runUpdate(rawTexture.getTexture());
     }
 }
 
@@ -197,8 +200,9 @@ void ofApp::draw(){
     sketch->draw();
     bitshift->draw();
     points->draw();
+    liquify->draw();
     
-    ofSetColor(200 + 55*sin(ofGetFrameNum()*0.1*cdRatio));
+    ofSetColor(128 + 128*sin(cdRatio*100), 64);
     ofDrawRectangle((1 - cdRatio)*portW*0.5-SCREEN_W*0.5, 120-SCREEN_H*0.5, portW*cdRatio, 2);
     ofDrawRectangle((1 - cdRatio)*portW*0.5, 120-SCREEN_H*0.5, portW*cdRatio, 2);
     
